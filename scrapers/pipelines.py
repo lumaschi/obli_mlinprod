@@ -8,7 +8,7 @@ from scrapy.spiders import Spider
 from scrapy.utils.misc import md5sum
 
 from scrapers.azure_helpers import upload_blob
-
+import hashlib
 
 class DuplicatesPipeline:
     def __init__(self):
@@ -53,9 +53,22 @@ class ItemLimit:
 
 
 class AzureImagesPipeline(ImagesPipeline):
+
+
+
+    def file_path(self, request, response=None, info=None, *, item=None):
+        
+        image_id = request.url.split("/")[-1].split(".")[-2]
+        image_type=item["property_type"]
+        image_filename = f"images/{image_id}_{image_type}.jpg"
+
+        return image_filename
+ 
+ 
     def image_downloaded(self, response, request, info, *, item=None):
         # TODO: puede ser una buena idea implementarlo de manera tal que quede la label
         # y el id o algún otro dato en el path de la imagen en el blob
+        
         checksum = None
         for path, _, buf in self.get_images(response, request, info, item=item):
             if checksum is None:
