@@ -21,9 +21,9 @@ class GallitoSpider(CrawlSpider):
             # SU CÓDIGO AQUÍ
             "properties_gallito.jl": {"format":"jsonlines"},
         },
-        "max_items_per_label": 15,
+        "max_items_per_label": 500,
         "label_field": "property_type",
-        "CLOSESPIDER_ITEMCOUNT": 30,
+        "CLOSESPIDER_ITEMCOUNT": 1000,
     }
     start_urls = [
         "https://www.gallito.com.uy/inmuebles/casas",  # !cant=80
