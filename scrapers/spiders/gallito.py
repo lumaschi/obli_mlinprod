@@ -26,8 +26,9 @@ class GallitoSpider(CrawlSpider):
         "CLOSESPIDER_ITEMCOUNT": 1000,
     }
     start_urls = [
-        "https://www.gallito.com.uy/inmuebles/casas",  # !cant=80
         "https://www.gallito.com.uy/inmuebles/apartamentos",  # !cant=80
+        "https://www.gallito.com.uy/inmuebles/casas",  # !cant=80
+        
     ]
 
     rules = (
@@ -35,8 +36,9 @@ class GallitoSpider(CrawlSpider):
             LinkExtractor(
                 allow=(
                     [
-                        r"\/inmuebles\/casas\?pag=\d+",  # !cant=80\?pag=\d+
                         r"\/inmuebles\/apartamentos\?pag=\d+",  # !cant=80\?pag=\d+
+                        r"\/inmuebles\/casas\?pag=\d+",  # !cant=80\?pag=\d+
+                        
                     ]
                 )
             )
