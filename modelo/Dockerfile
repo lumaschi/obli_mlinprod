@@ -11,7 +11,7 @@ RUN apt-get install -y python3 python3-pip
 COPY ./app /app
 
 # Copiar el archivo del modelo al directorio de trabajo
-COPY classifier.h5 /app/classifier.h5
+COPY conv.h5 /app/conv.h5
 
 # Copiar el archivo de requisitos al directorio de trabajo
 COPY requirements.txt /app/requirements.txt
