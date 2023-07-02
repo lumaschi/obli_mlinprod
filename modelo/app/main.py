@@ -54,24 +54,26 @@ async def predict(image_file: UploadFile = File(...)):
     return {"predicted_class": int(predicted_class)}
     #return {"predicted_class": str(predicted_class)}
 
-def classify_image(image):   
-    image = np.array(image)
-    image = tf.cast(image, dtype=tf.float32)
-    image = image / 255.0
-    image = np.expand_dims(image, axis=0)
-    prediction = model.predict(image)
-    # Obtiene las etiquetas de las clases
-    class_labels = ['APARTMENT', 'HOUSE']
-    # Devuelve un diccionario con las etiquetas de las clases y sus probabilidades correspondientes
-    return {class_labels[i]: float(prediction[0][i]) for i in range(2)}
+# def classify_image(image):   
+#     image = np.array(image)
+#     image = tf.cast(image, dtype=tf.float32)
+#     image = image / 255.0
+#     image = np.expand_dims(image, axis=0)
+#     prediction = model.predict(image)
+#     # Obtiene las etiquetas de las clases
+#     class_labels = ['APARTMENT', 'HOUSE']
+#     # Devuelve un diccionario con las etiquetas de las clases y sus probabilidades correspondientes
+#     return {class_labels[i]: float(prediction[0][i]) for i in range(2)}
 
 
-demo = gr.Interface(
-    fn=classify_image,  # la función que hace la clasificación
-    inputs=gr.inputs.Image(shape=(240, 320)),  # el tipo de entrada que espera tu modelo
-    outputs=gr.outputs.Label(num_top_classes=2),  # el tipo de salida que produce tu modelo
-)
-demo.launch(share=True)
+# demo = gr.Interface(
+#     fn=classify_image,  # la función que hace la clasificación
+#     inputs=gr.inputs.Image(shape=(240, 320)),  # el tipo de entrada que espera tu modelo
+#     outputs=gr.outputs.Label(num_top_classes=2),  # el tipo de salida que produce tu modelo
+# )
+# demo.launch(share=True)
+
+# app = gr.mount_gradio_app(app, demo, path="/")
 
 if __name__ == "__main__":
     import uvicorn
