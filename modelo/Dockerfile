@@ -19,6 +19,11 @@ COPY requirements.txt /app/requirements.txt
 # Establecer el directorio de trabajo
 WORKDIR /app
 
+#Prueba para que no de time out
+RUN pip install --default-timeout=100 future 
+RUN pip install --upgrade pip
+RUN pip install --upgrade setuptools
+
 # Instalar las dependencias y las versiones específicas de TensorFlow y Keras
 RUN pip install -r requirements.txt
 
