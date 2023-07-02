@@ -34,8 +34,7 @@ async def predict(image_file: UploadFile = File(...)):
         image = tf.image.resize(image, (240, 320))
         image = tf.cast(image, dtype=tf.float32)   
         image = image / 255.0
-        image=np.expand_dims(image, axis=0)
-        print(image.shape)
+        image = np.expand_dims(image, axis=0)
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Error processing image: {e}")
 
@@ -52,7 +51,7 @@ async def predict(image_file: UploadFile = File(...)):
         raise HTTPException(status_code=500, detail=f"Error interpreting prediction: {e}")
 
     #return {"predicted_class": int(predicted_class)}
-    return {"predicted_class": predicted_class}
+    return {"predicted_class": str(predicted_class)}
 
 if __name__ == "__main__":
     import uvicorn  
