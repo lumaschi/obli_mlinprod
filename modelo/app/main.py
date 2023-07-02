@@ -7,7 +7,7 @@ from fastapi import File, UploadFile
 from keras.preprocessing import image
 from PIL import Image
 import uvicorn
-import cv2
+import tensorflow as tf
 
 print('STARTING APP')
 
@@ -31,8 +31,8 @@ async def predict(image_file: UploadFile = File(...)):
     try:
         image = Image.open(image_file.file)    
         image = np.array(image)
-        image = cv2.resize(image, (240, 320))
-        image = image.astype(np.float32)
+        image = tf.image.resize(image, (240, 320))
+        image = tf.cast(image, dtype=tf.float32)   
         image = image / 255.0
         image=np.expand_dims(image, axis=0)
         print(image.shape)
