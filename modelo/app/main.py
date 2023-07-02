@@ -7,6 +7,7 @@ from fastapi import File, UploadFile
 from keras.preprocessing import image
 from PIL import Image
 import uvicorn
+import cv2
 
 print('STARTING APP')
 
@@ -28,8 +29,12 @@ async def predict(image_file: UploadFile = File(...)):
     if not model:
         raise HTTPException(status_code=500, detail="Model could not be loaded")
     try:
-        image = Image.open(image_file.file)
-        image = np.expand_dims(image, axis=0)
+        image = np.array(image)
+        image = cv2.resize(image, (240, 320))
+        image = image.astype(np.float32)
+        image = image / 255.0
+        image=np.expand_dims(image, axis=0)
+        print(image.shape)
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Error processing image: {e}")
 
