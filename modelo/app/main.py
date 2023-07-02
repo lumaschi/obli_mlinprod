@@ -7,7 +7,7 @@ from fastapi import File, UploadFile
 from keras.preprocessing import image
 from PIL import Image
 import uvicorn
-import cv2
+#import cv2
 
 print('STARTING APP')
 
