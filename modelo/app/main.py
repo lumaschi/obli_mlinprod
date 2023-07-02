@@ -75,5 +75,5 @@ demo.launch(share=True)
 
 if __name__ == "__main__":
     import uvicorn
-    app = gr.mount_gradio_app(app, demo, path="/")  
+    # app = gr.mount_gradio_app(app, demo, path="/")  
     uvicorn.run(app, host="0.0.0.0", port=80)
