@@ -45,13 +45,13 @@ async def predict(image_file: UploadFile = File(...)):
 
     try:
         # Obten la clase con mayor score
-        #predicted_class = np.argmax(predictions[0])
-        predicted_class=predictions
+        predicted_class = np.argmax(predictions[0])
+        #predicted_class=predictions
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error interpreting prediction: {e}")
 
-    #return {"predicted_class": int(predicted_class)}
-    return {"predicted_class": str(predicted_class)}
+    return {"predicted_class": int(predicted_class)}
+    #return {"predicted_class": str(predicted_class)}
 
 if __name__ == "__main__":
     import uvicorn  
