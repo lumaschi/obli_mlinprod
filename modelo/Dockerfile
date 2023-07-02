@@ -25,7 +25,7 @@ RUN pip3 install --upgrade pip
 RUN pip3 install --upgrade setuptools
 
 # Instalar las dependencias y las versiones específicas de TensorFlow y Keras
-RUN pip3 install -r requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Exponer el puerto 80
 EXPOSE 80
