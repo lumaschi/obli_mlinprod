@@ -7,3 +7,4 @@ pydantic
 tensorflow
 keras
 python-multipart
+gradio
