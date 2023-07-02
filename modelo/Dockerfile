@@ -21,8 +21,8 @@ WORKDIR /app
 
 #Prueba para que no de time out
 #RUN pip install --default-timeout=100 future 
-RUN pip install --upgrade pip
-RUN pip install --upgrade setuptools
+RUN pip3 install --upgrade pip
+RUN pip3 install --upgrade setuptools
 
 # Instalar las dependencias y las versiones específicas de TensorFlow y Keras
 RUN pip3 install -r requirements.txt
