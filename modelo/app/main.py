@@ -70,6 +70,7 @@ demo = gr.Interface(
     fn=classify_image,  # la función que hace la clasificación
     inputs=gr.inputs.Image(shape=(240, 320)),  # el tipo de entrada que espera tu modelo
     outputs=gr.outputs.Label(num_top_classes=2),  # el tipo de salida que produce tu modelo
+    title='Subir una imagen de una casa o apartamento para ejecutar la predicción'
 )
 gradio_app = gr.routes.App.create_app(demo)
 # demo.launch(share=True)
